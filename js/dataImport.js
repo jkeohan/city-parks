@@ -30,8 +30,7 @@
  		return obj
  	})
  	.then( d => {
-
  		renderBarChart(d)
  		renderParks(d)
  })
-}, 500)
+}, 100)
