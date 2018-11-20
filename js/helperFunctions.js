@@ -38,12 +38,13 @@
   }
 
   function toolTipBarCircle(d){
+    console.log('this is d: ', d)
     let top = event.pageY;
     let left = event.pageX;
     let tooltip = d3.select('.tooltipBar')
-    let title = d3.select('.title').text(d.Name)
+    let title = d3.select('.tooltipBar .title').text(d.Name)
     let neighborhood = d3.select('.neighborhood').text(`${d.Neighborhood}, ${d['Table Name']}`)
-    let avg = d3.select('.avg').text(`Overall: ${d.Overall}/100`)
+    let avg = d3.select('.tooltipBar .avg').text(elem => `Overall: ${d.Overall}/100`)
     tooltip
       .style('top', (top + 20) + 'px')
       .style('left', left + 'px')
@@ -60,7 +61,7 @@
 
   function removeToolTipBar() {
 
-    console.log('inside removeToolTipBar: ', this)
+    //console.log('inside removeToolTipBar: ', this)
     let tooltipBar = d3.select('.tooltipBar')
     let tooltip = d3.select('.tooltip')
     tooltip.style('opacity',0)
