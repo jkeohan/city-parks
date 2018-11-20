@@ -48,6 +48,7 @@
       .style('top', (top + 20) + 'px')
       .style('left', left + 'px')
       .style('opacity',1)
+      .style('display','block')
 
     
     // let barText = d3.selectAll('.barText').nodes().filter( elem => { 
@@ -58,11 +59,13 @@
   }
 
   function removeToolTipBar() {
-    // console.log('inside removeToolTipBar: ', this)
+
+    console.log('inside removeToolTipBar: ', this)
     let tooltipBar = d3.select('.tooltipBar')
     let tooltip = d3.select('.tooltip')
     tooltip.style('opacity',0)
-    tooltipBar.style('opacity',0)
+    tooltipBar.style('opacity',0).style('display','none')
+    
   }
 
   let circleActive = false;
