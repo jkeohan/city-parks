@@ -20,7 +20,7 @@
   // }
 
   function toolTip(d) {
-    //console.log(d.value.avg)
+    console.log(d.value.avg)
     let top = event.pageY;
     let left = event.pageX;
     let tooltip = d3.select('.tooltip')
@@ -30,6 +30,7 @@
       .style('top', (top + 20) + 'px')
       .style('left', left + 'px')
       .style('opacity',1)
+      .style('display','block')
   }
 
   function removeToolTip() {
@@ -38,7 +39,7 @@
   }
 
   function toolTipBarCircle(d){
-    console.log('this is d: ', d)
+    //console.log('this is d: ', d)
     let top = event.pageY;
     let left = event.pageX;
     let tooltip = d3.select('.tooltipBar')

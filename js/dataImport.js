@@ -24,8 +24,14 @@
 
  //d3.csv(url,(d) => { console.log('first cb', d); return d})
  
- setTimeout( () => { d3.tsv(parksTSV,  (d,i) => { return {...d, id:i} } ).then( d => {
- 	renderBarChart(d)
- 	renderParks(d)
+ setTimeout( () => { 
+ 	d3.tsv(parksTSV,  (d,i) => { 
+ 		let obj = {...d, id:i} 
+ 		return obj
+ 	})
+ 	.then( d => {
+
+ 		renderBarChart(d)
+ 		renderParks(d)
  })
 }, 500)
