@@ -4,9 +4,6 @@
 
  let artistsCSV = 'https://raw.githubusercontent.com/jkeohan/city-parks/master/js/artists.csv'
  
-d3.csv(artistsCSV).then(d => console.log('this is artists, ', d))
-
-
  d3.json(mapJSON).then( d => renderMap(d))
 
  //d3.csv(url,(d) => { console.log('first cb', d); return d})
@@ -20,7 +17,7 @@ d3.csv(artistsCSV).then(d => console.log('this is artists, ', d))
  		renderBarChart(d)
  		renderParks(d)
  })
-}, 500)
+}, 1000)
 
  let urls = [mapJSON, parksTSV]
 
