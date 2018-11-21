@@ -2,6 +2,10 @@
 
  let parksTSV = 'https://raw.githubusercontent.com/jkeohan/D3-Tutorials/master/Mapping/city-parks.tsv'
 
+ 
+d3.csv('artists.csv').then(d => console.log(d))
+
+
  d3.json(mapJSON).then( d => renderMap(d))
 
  //d3.csv(url,(d) => { console.log('first cb', d); return d})
@@ -21,7 +25,7 @@
 
  let reqs = urls.map( (d,i) => {
  	let obj;
- 	if(i == 0) { d3.json(mapJSON) }
+ 	if(i == 0) { obj = d3.json(mapJSON) }
  	else { 	d3.tsv(parksTSV,  (d,i) => { 
  		obj = {...d, id:i} 
  	})}
@@ -29,6 +33,10 @@
  })
 
  Promise.all(reqs).then(d => {console.log(d)})//map( d => console.log(d))
+
+
+
+
 
 
 

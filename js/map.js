@@ -70,6 +70,7 @@ function renderParks(data) {
 
   let legendActive = false;
   let activeLegend = ''
+  
   function filterCircles(){
     let circles = d3.selectAll('.parks')
     let legend = d3.select(this).node().textContent 

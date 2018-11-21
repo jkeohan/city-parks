@@ -4,19 +4,21 @@
 }
 
 main {
-  width: 900px;
+  display:flex;
+  width: 1200px;
   height:800px;
   margin: auto
 
 }
 
 #left {
-  height: 450px;
   width: 300px;
-  border: 1px solid;
   font-size: 15px;
   line-height: 40px;
+}
 
+#right {
+  flex: 1;
 }
 
 h3{
@@ -34,21 +36,32 @@ ul{
 
 }
 
-li {
-/*   border:1px solid; */
+#left-top {
+ border: 1px solid;
+}
+
+#left-top li {
+  align-items: center;
   display:flex;
   justify-content: space-between;
-     align-items: center;
+  line-height: 35px;
+}
+
+#left-bottom li {
+  align-items: center;
+  display:flex;
+  justify-content: space-between;
+  line-height: 35px;
 }
 
 .rating {
   border-radius: 50%;
   border: 1px solid;
-  text-align: center;
-  line-height:30px;
-  width:30px;
-  height:30px;
   font-size:12px;
+  height:30px;
+  line-height:30px;
+  text-align: center;
+  width:30px; 
 }
 
 #top {

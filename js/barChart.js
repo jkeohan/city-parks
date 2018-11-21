@@ -9,11 +9,6 @@ function renderBarChart(data) {
   
   n.sort( (a,b) => { return d3.descending(a.value.avg, b.value.avg)})
 
-    // key: "Canarsie"
-    // value:
-    //   parks: (7) [{…}, {…}, {…}, {…}, {…}, {…}, {…}]
-    //   total: 372
-
   let margin = { top: 20, left: 10 };
   let main = d3.select('main').node()
   let barChartContainer = d3.select('#chart').node()
@@ -107,15 +102,3 @@ function renderBarChart(data) {
     .on('mouseout', removeToolTipBar)
 }
 
-
-
-
-  // circles
-  //   .enter()
-  //   .append("circle")
-  //   .attr("cx", d => xScale(+d.Overall))
-  //   .attr("cy", (d, i) => {
-  //     let mid = yScale.bandwidth();
-  //     return yScale(i) + mid / 2;
-  //   })
-  //   .attr("r", 5);
