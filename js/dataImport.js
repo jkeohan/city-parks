@@ -2,8 +2,9 @@
 
  let parksTSV = 'https://raw.githubusercontent.com/jkeohan/D3-Tutorials/master/Mapping/city-parks.tsv'
 
+ let artistsCSV = 'https://raw.githubusercontent.com/jkeohan/city-parks/master/js/artists.csv'
  
-d3.csv('artists.csv').then(d => console.log(d))
+d3.csv(artistsCSV).then(d => console.log('this is artists, ', d))
 
 
  d3.json(mapJSON).then( d => renderMap(d))
@@ -32,7 +33,7 @@ d3.csv('artists.csv').then(d => console.log(d))
  	return obj
  })
 
- Promise.all(reqs).then(d => {console.log(d)})//map( d => console.log(d))
+ //Promise.all(reqs).then(d => {console.log(d)})//map( d => console.log(d))
 
 
 
