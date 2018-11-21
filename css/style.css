@@ -10,6 +10,47 @@ main {
 
 }
 
+#left {
+  height: 450px;
+  width: 300px;
+  border: 1px solid;
+  font-size: 15px;
+  line-height: 40px;
+
+}
+
+h3{
+  text-align: center;
+  text-decoration: underline; 
+  margin: 0px;
+  
+}
+
+ul{ 
+  list-style-type: none; 
+  padding: 15px;
+  margin: 0px;
+  padding-top: 0;
+
+}
+
+li {
+/*   border:1px solid; */
+  display:flex;
+  justify-content: space-between;
+     align-items: center;
+}
+
+.rating {
+  border-radius: 50%;
+  border: 1px solid;
+  text-align: center;
+  line-height:30px;
+  width:30px;
+  height:30px;
+  font-size:12px;
+}
+
 #top {
   display:flex;
   height:400px;

@@ -1,24 +1,3 @@
-  // HELPER FUNCTIONS
-  //getData();
-  // function getData() {
-  //   let url =
-  //     "https://raw.githubusercontent.com/jkeohan/D3-Tutorials/master/Mapping/nyc.json";
-  //   //
-  //   let storage = localStorage.getItem("nyc");
-  //   if (storage) {
-  //     //console.log("if: ", storage);
-  //     data = JSON.parse(storage);
-  //     render(data);
-  //     drawParks(data)
-  //   } else {
-  //     d3.json(url).then(data => {
-  //       localStorage.setItem("nyc", JSON.stringify(data));
-  //       render(data);
-  //       drawParks(data)
-  //     });
-  //   }
-  // }
-
   function toolTip(d) {
     console.log(d.value.avg)
     let top = event.pageY;

@@ -2,24 +2,6 @@
 
  let parksTSV = 'https://raw.githubusercontent.com/jkeohan/D3-Tutorials/master/Mapping/city-parks.tsv'
 
-// async function fetchAsync () {
-//   // await response of fetch call
-//   let response = await d3.tsv('https://raw.githubusercontent.com/jkeohan/D3-Tutorials/master/Mapping/city-parks.tsv');
-//   // only proceed once promise is resolved
-//   // only proceed once second promise is resolved
-//   return response;
-// }
-
-// // trigger async function
-// // log response or catch error of fetch promise
-// fetchAsync()
-//     .then(data => { 
-//     	renderMap(data) 
-//     	renderBarChart(data)
-//     })
-//     .catch(reason => console.log(reason.message))
-
-
  d3.json(mapJSON).then( d => renderMap(d))
 
  //d3.csv(url,(d) => { console.log('first cb', d); return d})
@@ -33,4 +15,21 @@
  		renderBarChart(d)
  		renderParks(d)
  })
-}, 100)
+}, 500)
+
+ let urls = [mapJSON, parksTSV]
+
+ let reqs = urls.map( (d,i) => {
+ 	let obj;
+ 	if(i == 0) { d3.json(mapJSON) }
+ 	else { 	d3.tsv(parksTSV,  (d,i) => { 
+ 		obj = {...d, id:i} 
+ 	})}
+ 	return obj
+ })
+
+ Promise.all(reqs).then(d => {console.log(d)})//map( d => console.log(d))
+
+
+
+
