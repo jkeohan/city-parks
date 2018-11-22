@@ -5,19 +5,45 @@
 
 main {
   display:flex;
-  width: 1200px;
+  flex-wrap:wrap;
   height:800px;
-  margin: auto
+  margin: auto;
+  width: 1300px;
+}
 
+#dashboard-title {
+  align-items: center;
+  border-bottom:0;
+  display: flex;
+  flex: 0 0 100%;
+    font-style: italic;
+  height: 50px;
+}
+
+#dashboard-title h3 {
+  border-bottom: none;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+#dashboard-title h6{
+font-size: 20px;
+margin:0;
+}
+
+#dashboard-title hr {
+      border: 1px solid;
+          height: 25px;
+  margin: 5px;
 }
 
 #left {
   display: flex;
   flex-direction: column;
   font-size: 15px;
-  line-height: 40px;
+  line-height: 38px;
   justify-content: space-between;
-  width: 300px;
+  width: 320px;
 }
 
 #right {
@@ -40,31 +66,35 @@ ul{
 }
 
 #left-top, #left-bottom {
- border: 1px solid;
+ border: 1px solid #cecece;;
+ padding-top: 5px;
 }
 
 #left-top li {
   align-items: center;
   display:flex;
   justify-content: space-between;
-  line-height: 35px;
 }
 
 #left-bottom li {
   align-items: center;
   display:flex;
   justify-content: space-between;
-  line-height: 35px;
+}
+
+.parkName {
+  font-size: 18px;
+  letter-spacing: .5px;
 }
 
 .rating {
   border-radius: 50%;
-  border: 1px solid;
+  border: 3px solid;
   font-size:12px;
-  height:30px;
-  line-height:30px;
+  height:33px;
+  line-height:27px;
   text-align: center;
-  width:30px; 
+  width:33px; 
 }
 
 #top {
@@ -90,14 +120,49 @@ ul{
     background: white;
     position: absolute;
     bottom: 0;
+        line-height: 30px;
     font-style: italic;
     text-align: center;
     text-align: center;
     font-size: 20px;
 }
 
-#bottom{
-/*  position: relative;*/
+#desc{
+      flex: 0 0 70%;
+margin-left: 10px;
+margin-bottom:5px;
+}
+
+#desc .gray {
+      color: gray;
+}
+
+#bottom {
+  position:relative;
+      display: flex;
+    flex-wrap: wrap;
+}
+
+#bottom h3{
+      text-align: left;
+      margin: 0;
+          text-decoration: none;
+              text-decoration: none;
+    font-size: 25px;
+    font-weight: normal;
+}
+
+#filters form{
+      display: flex;
+    width: 300px;
+    position: absolute;
+    right: 0;
+}
+
+#desc p {
+      color: rgb(62, 133, 181);
+  margin:0;
+      font-size: 20px;
 }
 
 #chart {

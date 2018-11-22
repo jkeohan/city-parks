@@ -1,5 +1,5 @@
   function toolTip(d) {
-    console.log(d.value.avg)
+    //console.log(d.value.avg)
     let top = event.pageY;
     let left = event.pageX;
     let tooltip = d3.select('.tooltip')

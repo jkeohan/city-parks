@@ -3,7 +3,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-  <title>Alphabet</title>
+  <title>Streetball Mecca</title>
 
   <!-- D3.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
@@ -16,10 +16,13 @@
 <body>
 
   <main>
+    <section id='dashboard-title'><h3>Streetball Mecca</h3><hr><h6>An in-depth look at the public basketball courts of NYC</h6>
+    </section>
     <section id="left">
       <article id='left-top'>
       <h3>Must-Sees</h3>
-      <ul>
+      <ul></ul>
+<!--       <ul>
         <li>
           <span class='parkName'>Brooklyn Bridge Park (Pier 2)</span>
           <span class='rating'>100</span>
@@ -54,11 +57,12 @@
         <li><span class='parkName'>Shore Park and Parkway</span>
           <span class='rating'>89</span>
         </li>
-      </ul>
+      </ul> -->
     </article>
           <article id='left-bottom'>
-      <h3>Must-Sees</h3>
-      <ul>
+      <h3>Stay Away</h3>
+      <ul></ul>
+<!--       <ul>
         <li>
           <span class='parkName'>Brooklyn Bridge Park (Pier 2)</span>
           <span class='rating'>100</span>
@@ -93,7 +97,7 @@
         <li><span class='parkName'>Shore Park and Parkway</span>
           <span class='rating'>89</span>
         </li>
-      </ul>
+      </ul> -->
     </article>
     </section>
 
@@ -105,6 +109,27 @@
         <div id="map"></div>
       </section>
       <section id='bottom'>
+        <div id="desc">
+          <h3>Which Neighborhood Has The Best Pickup Games?</h3>
+          <p>Bars represent <span class="gray">average neighborhood rating, </span>circles are individual court ratings</p>
+        </div>
+        <div id="filters">
+          <!-- <form action=""> -->
+            <div id="parkChoices"></div>
+            <div id="court">
+              <label for="">Find A Court</label>
+              <input type="text" value='test'>
+            </div>
+            <div id="borough">
+              <label for="">Select A Borough</label>
+              <select name="borough" id="borough">
+                <option value="all">(All)</option>
+                <option value="Brooklyn">Brooklyn</option>
+                <option value="Manhattan">Manhattan</option>
+              </select>
+            </div>
+          <!-- </form> -->
+        </div>
         <div id="chart"></div>
         <article class="tooltip">
           <p class='title'>Central Park</p>
@@ -122,6 +147,8 @@
   <script src="js/helperFunctions.js"></script>
   <script src="js/map.js"></script>
   <script src="js/barChart.js"></script>
+  <script src="js/topParks.js"></script>
+  <script src="js/filters.js"></script>
   <script src="js/dataImport.js"></script>
 
   <!--  <script src="js/helperFunctions.js"></script>

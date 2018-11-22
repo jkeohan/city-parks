@@ -1,25 +1,12 @@
-function renderBarChart(data) {
-  //console.log('this is renderBarChart: ', data)
-  let n = d3.nest().key( d => d.Neighborhood)
-    .rollup( l => ({
-      'parks': l, 
-      'total': d3.sum(l, d => d.Overall),  
-      'avg': d3.mean(l, d =>  d.Overall) 
-    })).entries(data)
-  
-  n.sort( (a,b) => { return d3.descending(a.value.avg, b.value.avg)})
-
   let margin = { top: 20, left: 10 };
   let main = d3.select('main').node()
   let barChartContainer = d3.select('#chart').node()
-  let width = barChartContainer.clientWidth
-  let height = main.clientHeight
+  let mainWidth = barChartContainer.clientWidth
+  let mainHeight = main.clientHeight
 
-  data = data.sort((a, b) => d3.descending(+a.Overall, +b.Overall));
   //console.log(data);
   let yScale = d3
     .scaleBand()
-    .domain(data.map((d, i) => i))
     .range([0, 10000 - margin.top])
     .padding(0.2);
 
@@ -53,15 +40,44 @@ function renderBarChart(data) {
 
   gScale.call(xAxis);
 
-  let text = gText.selectAll("text").data(n);
+function renderBarChart(data,filter) {
+  if(!allParks.length) {allParks = data}
+  
+  data = data.sort((a, b) => d3.descending(+a.Overall, +b.Overall));
+  console.log('this is allParks from renderBarChart: ',data)
+  yScale.domain(data.map((d, i) => i))
+  //console.log('this is renderBarChart: ', data)
+  let n = d3.nest().key( d => d.Neighborhood)
+    .rollup( l => ({
+      'parks': l, 
+      'total': d3.sum(l, d =>  d.Overall),  
+      'avg': d3.mean(l, d =>  d.Overall),
+      'borough': l[0].Borough
+    })).entries(data)
+  
+  n.sort( (a,b) => { return d3.descending(a.value.avg, b.value.avg)})
+  console.log('this is n: ', n)
+  let text = gText.selectAll("text").data(n, d => d.key)
   text
     .enter()
     .append("text")
     .attr("x", 0)
     .attr("y", (d, i) => yScale(i))
+    //.attr("y", (d, i) => i * 34)
     .text(d => d.key)
     .attr("dy", "1em")
-    .attr('class','barText')
+    .attr('class', d => {
+      //console.log(d)
+      return `barText ${d.key}`
+    })
+
+  text
+    .transition().duration(1000)
+    .attr("y", (d, i) => yScale(i))
+    //.attr("y", (d, i) => i * 34)
+
+  text.exit().remove()
+
 
   let rects = gBar.selectAll("rect").data(n);
 
@@ -70,11 +86,21 @@ function renderBarChart(data) {
     .append("rect")
     .attr("x", 0)
     .attr("y", (d, i) => yScale(i))
+    //.attr("y", (d, i) => i * 34)
     .attr("width", d => xScale(d.value.total/d.value.parks.length))
     .attr("height", yScale.bandwidth())
     .style("fill", "ccc")
+    .attr('class', d => `${d.key}`)
     .on('mousemove', d => toolTip(d))
     .on('mouseout', removeToolTipBar)
+
+  rects
+    .transition().duration(1000)
+    //.attr("y", (d, i) => i * 34)
+     .attr("y", (d, i) => yScale(i))
+    //.attr("height", yScale.bandwidth())
+
+  rects.exit().remove()
 
   let gCircle= gBar.selectAll("g.circles").data(n)
       .enter().append('g').attr('class','circles')
@@ -100,5 +126,14 @@ function renderBarChart(data) {
     .on('click',updateInfo)
     .on('mouseover', toolTipBarCircle)
     .on('mouseout', removeToolTipBar)
+
+  circles
+      .transition().duration(1000)
+      .attr("cy", (d, i) => {
+        let mid = yScale.bandwidth() / 2;
+        return mid;
+    })
+
+  //circles.exti().remove()
 }
 

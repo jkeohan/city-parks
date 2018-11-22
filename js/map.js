@@ -9,7 +9,7 @@
   let projection = d3
     .geoMercator()
     .center([-73.93, 40.68])
-    .scale(58000)
+    .scale(56000)
     .translate([width / 2, height / 2 + 20]);
 
   let path = d3.geoPath().projection(projection);
@@ -47,9 +47,9 @@ function renderParks(data) {
   .attr('class', (d,i) => `parks park${d.id}`)
   .attr('fill', d =>  legend(d['Overall court grouping']))
   .on('click',updateInfo)
-
+  // LEGEND
   let gLegendsContainer = container.append('g')
-    .attr('transform','translate(275,275)')
+    .attr('transform','translate(20,20)')
 
    
   let gLegends = gLegendsContainer.selectAll('g').data(legend.domain())
@@ -63,9 +63,10 @@ function renderParks(data) {
     .style('stroke','none')
 
   gLegends.append('text')
-    .attr('x', 15).text(d => d)
+    .attr('x', 20).text(d => d)
     .attr('dy','1em').attr('stroke','#575758').attr('fill','#575758')
-    .style('font-size',9).style('font-family', 'sans-serif').style('font-weight',100)
+    .style('font-size',10).style('font-family', 'sans-serif').style('font-weight',100)
+    .style('letter-spacing', '1px')
     
 
   let legendActive = false;
@@ -79,7 +80,7 @@ function renderParks(data) {
       activeLegend = ''
     } else {
       circles.transition().duration(500).style('opacity', d => {
-        return d['Overall court grouping'] == d3.select(this).node().textContent ? 1 : 0
+        return d['Overall court grouping'] == legend ? 1 : 0
       })
       activeLegend = legend
     }

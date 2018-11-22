@@ -6,7 +6,8 @@
  
  d3.json(mapJSON).then( d => renderMap(d))
 
- //d3.csv(url,(d) => { console.log('first cb', d); return d})
+ let allParks = [];
+ let filteredParks = [];
  
  setTimeout( () => { 
  	d3.tsv(parksTSV,  (d,i) => { 
@@ -14,23 +15,27 @@
  		return obj
  	})
  	.then( d => {
+ 		allParkData = d
  		renderBarChart(d)
  		renderParks(d)
+ 		renderTopParks(d)
+ 		// renderBoroughList(d)
  })
 }, 1000)
 
- let urls = [mapJSON, parksTSV]
+ // let urls = [mapJSON, parksTSV]
 
- let reqs = urls.map( (d,i) => {
- 	let obj;
- 	if(i == 0) { obj = d3.json(mapJSON) }
- 	else { 	d3.tsv(parksTSV,  (d,i) => { 
- 		obj = {...d, id:i} 
- 	})}
- 	return obj
- })
+ // let reqs = urls.map( (d,i) => {
+ // 	let obj;
+ // 	if(i == 0) { obj = d3.json(mapJSON) }
+ // 	else { 	d3.tsv(parksTSV,  (d,i) => { 
+ // 		obj = {...d, id:i} 
+ // 	})}
+ // 	return obj
+ // })
 
  //Promise.all(reqs).then(d => {console.log(d)})//map( d => console.log(d))
+
 
 
 
