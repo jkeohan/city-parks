@@ -1,40 +1,26 @@
  let mapJSON = 'https://raw.githubusercontent.com/jkeohan/D3-Tutorials/master/Mapping/nyc.json'
-
+ let mapJSONCounties ='https://raw.githubusercontent.com/jkeohan/D3-Tutorials/master/Mapping/us-10m.v1.json'
  let parksTSV = 'https://raw.githubusercontent.com/jkeohan/D3-Tutorials/master/Mapping/city-parks.tsv'
-
- let artistsCSV = 'https://raw.githubusercontent.com/jkeohan/city-parks/master/js/artists.csv'
- 
- d3.json(mapJSON).then( d => renderMap(d))
 
  let allParks = [];
  let filteredParks = [];
- 
- setTimeout( () => { 
- 	d3.tsv(parksTSV,  (d,i) => { 
- 		let obj = {...d, id:i} 
- 		return obj
- 	})
- 	.then( d => {
- 		allParkData = d
- 		renderBarChart(d)
- 		renderParks(d)
- 		renderTopParks(d)
- 		// renderBoroughList(d)
- })
-}, 1000)
 
- // let urls = [mapJSON, parksTSV]
+Promise.all([
+     d3.json(mapJSON),
+     d3.tsv(parksTSV,  (d,i) => { 
+	 		let obj = {...d, id:i} 
+	 		return obj
+	 	}),
+]).then(function(files) {
+    renderMap(files[0])
+    allParkData = files[1]
+	renderBarChart(files[1])
+	renderParks(files[1])
+	renderTopParks(files[1])
+}).catch(function(err) {
+    // handle error here
+})
 
- // let reqs = urls.map( (d,i) => {
- // 	let obj;
- // 	if(i == 0) { obj = d3.json(mapJSON) }
- // 	else { 	d3.tsv(parksTSV,  (d,i) => { 
- // 		obj = {...d, id:i} 
- // 	})}
- // 	return obj
- // })
-
- //Promise.all(reqs).then(d => {console.log(d)})//map( d => console.log(d))
 
 
 
