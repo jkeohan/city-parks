@@ -71,7 +71,7 @@ function renderBarChart(data) {
     .style("fill", "ccc")
     .attr('class', d => `${d.key}`)
     .on('mousemove', d => rectToolTip(d))
-    // .on('mouseout', removeRectToolTip)
+    .on('mouseout', removeRectToolTip)
 
   neighborhood.selectAll('circle').data(d => d.value.parks)
     .enter().append('circle')
