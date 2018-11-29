@@ -49,6 +49,7 @@ function renderBarChart(data) {
       'avg': d3.mean(l, d =>  d.Overall),
       'borough': l[0].Borough
     })).entries(data)
+    console.log('this is n: ', n)
 
   let height = n.length * 33
   svg.style('height', `${height}px`)
