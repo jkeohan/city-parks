@@ -18,6 +18,10 @@
   margin: 0;
 }
 
+.circleToolTip {
+  width: 280px;
+}
+
 .circleToolTip .title {
   margin-top: 0;
   margin-bottom: 0;

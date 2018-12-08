@@ -27,6 +27,7 @@
       })
 
         d3.select('#court input').attr('value','')
+         d3.selectAll('.neighborhoods rect').transition().duration(500).style('opacity',1)
         circleActive = false
     }
      else if(activeLegend) {
@@ -35,6 +36,7 @@
         return  d['Overall court grouping'] == activeLegend ? 1 : 0 
       })
         d3.select('#court input').attr('value','')
+      d3.selectAll('.neighborhoods rect').transition().duration(500).style('opacity',1)
       circleActive = false
     }
       else if(isBoroughActive) {
@@ -43,12 +45,14 @@
         return  d['Borough'] == boroughChoice ? 1 : 0 
       })
         d3.select('#court input').attr('value','')
+      d3.selectAll('.neighborhoods rect').transition().duration(500).style('opacity',1)
       circleActive = false
     }
      else if(circleActive) {
       console.log(3, activeLegend)
       circles.transition().duration(500).style('opacity', 1)
       d3.select('#court input').attr('value','')
+      d3.selectAll('.neighborhoods rect').transition().duration(500).style('opacity',1)
       circleActive = false
     }
    
