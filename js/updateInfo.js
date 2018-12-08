@@ -20,13 +20,14 @@
       circleActive = true
 
     } else if(activeLegend && isBoroughActive) {
-      console.log(2)
+      console.log(2, boroughChoice, circleActive)
       circles.transition().duration(500).style('opacity', d => {
         return  d['Overall court grouping'] == activeLegend && d['Borough'] == boroughChoice
         ? 1 : 0 
       })
+
         d3.select('#court input').attr('value','')
-        cirlceActive = false
+        circleActive = false
     }
      else if(activeLegend) {
       console.log(3, activeLegend)
