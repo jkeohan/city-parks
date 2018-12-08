@@ -1,83 +1,100 @@
   let legendActive = false;
   let activeLegend = ''
   
-  function filterCircles(d){
+  function filterCircles(d,viaBorough){
+    
     let legendOptions = d3.selectAll('.legend')
     let circles = d3.selectAll('.parks')
-    let legend = d3.select(this).node().textContent 
-    
-    // console.log('this is filterCircles - isBoroughActive: ', isBoroughActive)
-    // console.log('this is filterCircles - boroughChoice: ', boroughChoice)
-    if(legendActive) {
-      if(isBoroughActive) {
-        if(activeLegend == legend) {
-          circles.transition().duration(500).style('opacity', d => {
+    let legend = d
+
+     if(activeLegend && isBoroughActive && viaBorough) {
+      console.log('first')
+      circles.transition().duration(500).style('opacity', d => {
+        return  d['Overall court grouping'] == legend && d['Borough'] == boroughChoice
+        ? 1 : 0 
+      })
+    }
+    else if(activeLegend && isBoroughActive && activeLegend == legend) {
+      console.log('second', activeLegend, isBoroughActive)
+      circles.transition().duration(500).style('opacity', d => {
             return  d['Borough'] == boroughChoice
             ? 1 : 0 })
-          legendOptions.style('opacity',1)
-          activeLegend = ''
-          legendActive = false
-          console.log('if - if - legendActive: ', legendActive)
-        } else{
-            circles.transition().duration(500).style('opacity', d => {
-            return  d['Overall court grouping'] == legend && d['Borough'] == boroughChoice
-            ? 1 : 0 })
-          legendOptions.style('opacity',.4)
-          d3.select(this).style('opacity',1)
-          activeLegend = legend
-          legendActive = true
-          console.log('this is filterCircles - legend')
-          }
-      } else {
-          console.log('borough isnt active', legend)
-          circles.transition().duration(500).style('opacity', 1)
-          legendOptions.style('opacity',1)
-          activeLegend = ''
-          legendActive = false
-      }
-    } else {
-        console.log('first time legend is chosen')
-        legendOptions.style('opacity',.4)
-        d3.select(this).style('opacity',1)
-        activeLegend = legend
-        legendActive = true
-        if(isBoroughActive) {
-          circles.transition().duration(500).style('opacity', d => {
-            return  d['Overall court grouping'] == legend && d['Borough'] == boroughChoice
-            ? 1 : 0 })
-        } else {
-          circles.transition().duration(500).style('opacity', d => {
-            return  d['Overall court grouping'] == legend 
-            ? 1 : 0 })
-      }
+      legendOptions.style('opacity',1)
+      activeLegend = ''
     }
-  }
-
-
-  // if(legendActive) {
-  //   if(isBoroughActive) {
-  //    if(activeLegend == legend){
-  //     // show all circles for that borough
-  //     // unfilter the legends 
-  //    } else {
-  //     // filter circles for chosen legend type and boroughChoice
-  //     // change opacity for other legend options
-  //     // update activeLegend with that value
-  //     }
-  //   }
-  // } else {
-  //     // change opacity for other legend options
-  //     // change legendActive to true
-  //     // update activeLegend with that value
-  //   if(isBoroughActive) {
-  //     // filter circles for chosen legend type and boroughChoice
-  //   } else {
-  //     // filter cirlces for chosen legend only
-  //   }
-    
-
-  // }
-
+    else if(activeLegend && isBoroughActive){
+      console.log('third', activeLegend, legend)
+      circles.transition().duration(500).style('opacity', d => {
+        return  d['Borough'] == boroughChoice
+        ? 1 : 0 
+      })
+      activeLegend = ''
+      legendOptions.style('opacity',1)
+    }
+    else if(legend && isBoroughActive) {
+      console.log('fourth',activeLegend, boroughChoice)
+      circles.transition().duration(500).style('opacity', d => {
+        return  d['Overall court grouping'] == legend && d['Borough'] == boroughChoice
+        ? 1 : 0 
+      })
+      activeLegend = legend
+      legendOptions.style('opacity', d => {
+        return d == legend ? 1 : .4
+      })
+    }
+     else if(activeLegend == legend && isBoroughActive == false){
+      console.log('5',activeLegend, boroughChoice)
+       circles.transition().duration(500).style('opacity',1)
+      activeLegend = ''
+      legendOptions.style('opacity', 1)
+    }
+     else if(activeLegend && isBoroughActive == false){
+       circles.transition().duration(500).style('opacity', d => {
+        console.log('6', activeLegend)
+        return  d['Overall court grouping'] == legend 
+          ? 1 : 0 })
+      activeLegend = legend
+      legendOptions.style('opacity', d => {
+        return d == legend ? 1 : .4
+      })
+    }
+    else if(!activeLegend  && isBoroughActive == false){
+      console.log('7', activeLegend)
+      circles.transition().duration(500).style('opacity', d => {
+          return  d['Overall court grouping'] == legend 
+          ? 1 : 0 })
+      activeLegend = legend
+      legendOptions.style('opacity', d => {
+        return d == legend ? 1 : .4
+      })
+    }
+    else if(isBoroughActive) {
+      console.log('8', activeLegend, isBoroughActive)
+      circles.transition().duration(500).style('opacity', d => {
+            return  d['Borough'] == boroughChoice
+            ? 1 : 0 })
+    }
+    else if(activeLegend) {
+      console.log('9')
+      circles.transition().duration(500).style('opacity', d => {
+          return  d['Overall court grouping'] == legend 
+          ? 1 : 0 })
+      activeLegend = legend
+      legendOptions.style('opacity', d => {
+        return d == legend ? 1 : .4
+      })
+    }
+    else if(!activeLegend) {
+      console.log('10')
+      circles.transition().duration(500).style('opacity', d => {
+          return  d['Overall court grouping'] == legend 
+          ? 1 : 0 })
+       activeLegend = legend
+       legendOptions.style('opacity', d => {
+        return d == legend ? 1 : .4
+      })
+    }
+}
 
 
 

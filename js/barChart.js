@@ -85,6 +85,14 @@ function renderBarChart(data) {
     .attr('fill', d =>  legend(d['Overall court grouping']))
     .attr('stroke','black')
     .attr('class', (d,i) => `rect-circle parks park${d.id}`)
+    .style('opacity', d => {
+        if(!activeLegend) {
+          return  1
+        } else {
+            return  d['Overall court grouping'] == activeLegend 
+            ? 1 : 0 
+        }
+      })
     .on('click',updateInfo)
     .on('mouseover', circleToolTip)
     .on('mouseout', removeCircleToolTip)

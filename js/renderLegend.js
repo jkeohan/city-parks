@@ -14,7 +14,9 @@
     .enter().append('g')
     .attr('transform',(d,i) => `translate(0,${i*20})`)
     .attr('class', d => `legend ${d}`)
-    .on('click', filterCircles) // filterCircles is in legend.js
+    .on('click', d => {
+      filterCircles(d)
+    }) // filterCircles is in legend.js
 
   gLegends.append('rect')
     .attr('width', 13).attr('height', 13)

@@ -1,35 +1,46 @@
   let circleActive = false;
 
   function updateInfo(d,clasName){
-    //console.log('updateInfo - isInputActive: ', isInputActive)
-    d3.selectAll('.legend').style('opacity', 1)
     let parkImage =  d3.select('#image')
     let imageTitle  = d3.select('#title')
+    let circles = d3.selectAll('.parks')
     console.log('circleActive is: ', circleActive, d)
     if(!circleActive || isInputActive) {
-      d3.selectAll('.parks').transition().duration(500).style('opacity',0)
-      d3.selectAll(`.park${d.id}`)
-        // .attr('stroke','rgba(230,230,230, .8)')
+      console.log(1)
+      circles.transition().duration(500).style('opacity',0)
+      d3.select(`.park${d.id}`)
         .transition().duration(500).style('opacity',1)
-        // .attr('r',10)
-        // .attr('stroke-width',10)
         parkImage.style('background-image', `url(${d.URL})`)
-      imageTitle.html(d.Name)
+        imageTitle.html(d.Name)
 
       d3.selectAll('.rect-circle').transition().duration(500).style('opacity',.3)
       d3.selectAll(`.rect-circle.park${d.id}`).transition().duration(500).style('opacity',1)
-        // .attr('stroke-width',2)
 
       d3.selectAll('.neighborhoods rect').transition().duration(500).style('opacity',.3)
+      circleActive = true
 
-    } else {
-      d3.selectAll('.parks').transition().duration(500)
-        .style('opacity',1)
-        // .attr('stroke-width',1)
-        // .attr('stroke','black')
-        // .attr('r',4)
+    } else if(activeLegend && isBoroughActive) {
+      console.log(2)
+      circles.transition().duration(500).style('opacity', d => {
+        return  d['Overall court grouping'] == activeLegend && d['Borough'] == boroughChoice
+        ? 1 : 0 
+      })
         d3.select('#court input').attr('value','')
-        d3.selectAll('.neighborhoods rect').transition().duration(500).style('opacity',1)
+        cirlceActive = false
     }
-    circleActive = !circleActive
+     else if(activeLegend) {
+      console.log(3, activeLegend)
+      circles.transition().duration(500).style('opacity', d => {
+        return  d['Overall court grouping'] == activeLegend ? 1 : 0 
+      })
+        d3.select('#court input').attr('value','')
+      circleActive = false
+    }
+     else if(circleActive) {
+      console.log(3, activeLegend)
+      circles.transition().duration(500).style('opacity', 1)
+      d3.select('#court input').attr('value','')
+      circleActive = false
+    }
+   
   }

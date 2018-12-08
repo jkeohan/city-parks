@@ -17,6 +17,7 @@
   function removeRectToolTip() {
     let tooltip = d3.select('.rectToolTip')
     tooltip.style('opacity',0)
+    .style('display','none')
   }
 
   function circleToolTip(d){
@@ -28,7 +29,7 @@
     let neighborhood = d3.select('.neighborhood').text(`${d.Neighborhood}, ${d['Table Name']}`)
     let avg = d3.select('.circleToolTip .avg').text(elem => `Overall: ${d.Overall}/100`)
     tooltip
-      .style('top', (top + 20) + 'px')
+      .style('top', (top) + 'px')
       .style('left', left + 'px')
       .style('opacity',1)
       .style('display','block')

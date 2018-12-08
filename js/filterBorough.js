@@ -10,27 +10,30 @@ let boroughChoice = ''
 // SELECT A BOROUGH (All, Manhattan, Brooklyn)
 function handleOnSelect(){
 	//console.log('this is allParks: ', allParks)
-	legendActive = false;
-    activeLegend = ''
-	d3.selectAll('.legend').style('opacity', 1)
+	// legendActive = false;
+ //    activeLegend = ''
+	//d3.selectAll('.legend').style('opacity', 1)
 	input.attr('value', '')
 	let borough = event.target.value
-	let circles = d3.selectAll('.parks')
+	//let circles = d3.selectAll('.parks')
 	if(borough == 'all') {
-	  circles.transition().duration(500).style('opacity', 1)
+	  //circles.transition().duration(500).style('opacity', 1)
 	  boroughChoice = ''
 	  renderBarChart(allParks)
 	  renderTopParks(allParks)
 	  isBoroughActive = false
+	  filterCircles(activeLegend,false)
+
 	} else {
-	  circles.transition().duration(500).style('opacity', d => {
-	    return d['Borough'] == borough ? 1 : 0
-	  })
+	  // circles.transition().duration(500).style('opacity', d => {
+	  //   return d['Borough'] == borough ? 1 : 0
+	  // })
 	  boroughChoice = borough
 	  filteredParks = allParks.filter( d => d['Borough'] == borough)
 	  renderBarChart(filteredParks)
 	  renderTopParks(filteredParks)
 	  isBoroughActive = true
+	  filterCircles(activeLegend,true)
 	}
 }
 
