@@ -37,6 +37,14 @@
         d3.select('#court input').attr('value','')
       circleActive = false
     }
+      else if(isBoroughActive) {
+      console.log(3, activeLegend)
+      circles.transition().duration(500).style('opacity', d => {
+        return  d['Borough'] == boroughChoice ? 1 : 0 
+      })
+        d3.select('#court input').attr('value','')
+      circleActive = false
+    }
      else if(circleActive) {
       console.log(3, activeLegend)
       circles.transition().duration(500).style('opacity', 1)

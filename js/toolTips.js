@@ -1,9 +1,7 @@
   function rectToolTip(d) {
-    //console.log('this is rectToolTip: ', d.value.avg)
     console.log('this is event: ', event)
     let top = event.offsetY;
     let left = event.offsetX;
-    //console.log('this is rectToolTip: ',top, left)
     let tooltip = d3.select('.rectToolTip')
     let title = d3.select('.title').text(d.key)
     let avg = d3.select('.avg').text(`Avg. Overall Rating: ${Math.floor(d.value.avg)}/100`)
@@ -36,7 +34,6 @@
   }
 
   function removeCircleToolTip() {
-    //console.log('inside removeToolTipBar: ', this)
     let tooltipBar = d3.select('.circleToolTip')
     let tooltip = d3.select('.circleToolTip')
     tooltip.style('opacity',0)

@@ -36,14 +36,9 @@
         <div id="image">
           <div id="title"></div>
         </div>
-        <div id="map"></div>
-      </section>
-      <section id='bottom'>
-        <div id="desc">
-          <h3>Which Neighborhood Has The Best Pickup Games?</h3>
-          <p>Bars represent <span class="gray">average neighborhood rating, </span>circles are individual court ratings</p>
-        </div>
-        <div id="filters">
+        <div id="map">
+          <svg id="boroughs"></svg>
+          <div id="filters">
           <!-- <form action=""> -->
             <div id="parkChoices"></div>
             <div id="court">
@@ -59,7 +54,16 @@
               </select>
             </div>
           <!-- </form> -->
+          </div>
+
+       </div>
+      </section>
+      <section id='bottom'>
+        <div id="desc">
+          <h3>Which Neighborhood Has The Best Pickup Games?</h3>
+          <p>Bars represent <span class="gray">average neighborhood rating, </span>circles are individual court ratings</p>
         </div>
+ 
         <div id="axis"></div>
         <div id="chart"></div>
         <article class="rectToolTip">
@@ -83,14 +87,10 @@
   <script src="js/renderLegend.js"></script>
   <script src="js/barChart.js"></script>
   <script src="js/topParks.js"></script>
-  \<script src="js/filterInput.js"></script>
+  <script src="js/filterInput.js"></script>
   <script src="js/filterBorough.js"></script>
   <script src="js/dataImport.js"></script>
 
-  <!--  <script src="js/helperFunctions.js"></script>
-  <script src="js/Draw1.js"></script>
-  <script src="js/Draw2.js"></script>
-  <script src="js/alphaMain.js"></script> -->
 
 </body>
 

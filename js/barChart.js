@@ -4,10 +4,8 @@
   let mainWidth = barChartContainer.clientWidth
   let mainHeight = main.clientHeight
 
-  //console.log(data);
   let yScale = d3
     .scaleBand()
-    //.domain(data.map((d, i) => i))
     .range([0, 10000 - margin.top])
     .padding(0.2);
 
@@ -30,10 +28,6 @@
     .attr('width', '100%').attr('height', 20)
   let gScale2 = svgAxis.append('g').style('font-size', 14)
   gScale2.call(xAxis)
-  ////
-  // let gScale = gBottom.append("g").attr("class", "gScale");
-
-  // gScale.call(xAxis);
 
 function renderBarChart(data) {
   if(!allParks.length) {
@@ -49,7 +43,6 @@ function renderBarChart(data) {
       'avg': d3.mean(l, d =>  d.Overall),
       'borough': l[0].Borough
     })).entries(data)
-    console.log('this is n: ', n)
 
   let height = n.length * 33
   svg.style('height', `${height}px`)
@@ -81,7 +74,6 @@ function renderBarChart(data) {
       return mid;
     })
     .attr("r", 5)
-    //.style('fill','rgb(90, 85, 85)')
     .attr('fill', d =>  legend(d['Overall court grouping']))
     .attr('stroke','black')
     .attr('class', (d,i) => `rect-circle parks park${d.id}`)

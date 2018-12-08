@@ -155,8 +155,8 @@ ul {
 #filters {
   display: flex;
   position: relative;
-  top: -30px;
-  right: 30px;
+/*  top: -30px;
+  right: 30px;*/
 }
 
 #parkChoices {
@@ -169,6 +169,7 @@ ul {
   top: 40px;
   background: white;
   overflow: scroll;
+  z-index:100;
 }
 
 .parkChoice {
@@ -176,10 +177,23 @@ ul {
   padding: 5px 0;
   cursor: pointer;
 }
+
 #court,
 #borough {
   display: flex;
   flex-direction: column;
+}
+
+#court {
+  flex: 1;
+}
+
+#court input {
+ font-size: 14px;
+}
+
+#borough select {
+ font-size: 14px;
 }
 
 #desc p {

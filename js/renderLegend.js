@@ -2,10 +2,6 @@
   renderLegend()
 
   function renderLegend(data){
-    // let legend = d3.scaleOrdinal()
-    // .domain(['Very Good', 'Mediocre', 'Poor']) 
-    // //.range(['#3e85b5','#807d7d', '#e78410'])
-    // .range(['#3e85b5','#d9d916', '#e78410'])
 
   let gLegendsContainer = container.append('g')
     .attr('transform','translate(20,20)')
@@ -16,7 +12,7 @@
     .attr('class', d => `legend ${d}`)
     .on('click', d => {
       filterCircles(d)
-    }) // filterCircles is in legend.js
+    }) 
 
   gLegends.append('rect')
     .attr('width', 13).attr('height', 13)

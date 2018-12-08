@@ -6,9 +6,8 @@ function renderParks(data) {
   imageTitle.html(title)
   parkImage.style('background-image', `url(${image1})`)
   
-  //console.log('renderParks')
   let circles = container.selectAll(".parks circles").data(data)
-  // PARKS RENDERED AS CIRCLES ON THE MAP
+
   circles.enter().append('circle')
   .attr("transform", function(d) { 
       return "translate(" + projection([+d.Lon, +d.Lat]) + ")" 

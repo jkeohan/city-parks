@@ -1,7 +1,7 @@
   let svgBoroughs = d3.select('#map').node()
   let height = svgBoroughs.clientHeight 
   let width = svgBoroughs.clientWidth
-  let container = d3.select("#map").append("svg");
+  let container = d3.select("#map #boroughs")
 
   let legend = d3.scaleOrdinal()
     .domain(['Very Good', 'Mediocre', 'Poor'])
@@ -18,7 +18,7 @@
 
 function renderMap(nyb) {
     container
-      .attr("id", "boroughs")
+      // .attr("id", "boroughs")
       .selectAll(".state")
       .data(nyb.features)
       .enter()
