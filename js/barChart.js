@@ -88,7 +88,7 @@ function renderBarChart(data) {
       })
     .on('click',updateInfo)
     .on('mouseover', circleToolTip)
-    .on('mouseout', removeCircleToolTip)
+    //.on('mouseout', removeCircleToolTip)
 
   neighborhoods
     .transition().duration(1000)
