@@ -16,7 +16,9 @@
       d3.selectAll('.rect-circle').transition().duration(500).style('opacity',.3)
       d3.selectAll(`.rect-circle.park${d.id}`).transition().duration(500).style('opacity',1)
 
-      d3.selectAll('.neighborhoods rect').transition().duration(500).style('opacity',.3)
+      d3.selectAll('.neighborhoods rect').transition().duration(500).style('opacity', n => {
+        return n.value['neighborhood'] == d['Neighborhood'] ? 1 : 0.3 })
+
       circleActive = true
 
     } else if(activeLegend && isBoroughActive) {

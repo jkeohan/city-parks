@@ -7,7 +7,7 @@
     let circles = d3.selectAll('.parks')
     let legend = d
 
-     if(activeLegend && isBoroughActive && viaBorough) {
+    if(activeLegend && isBoroughActive && viaBorough) {
       console.log('first')
       circles.transition().duration(500).style('opacity', d => {
         return  d['Overall court grouping'] == legend && d['Borough'] == boroughChoice

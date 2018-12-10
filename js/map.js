@@ -1,7 +1,7 @@
   let svgBoroughs = d3.select('#map').node()
   let height = svgBoroughs.clientHeight 
   let width = svgBoroughs.clientWidth
-  let container = d3.select("#map #boroughs")
+  let container = d3.select("#map svg")
 
   let legend = d3.scaleOrdinal()
     .domain(['Very Good', 'Mediocre', 'Poor'])

@@ -41,7 +41,8 @@ function renderBarChart(data) {
       'parks': l, 
       'total': d3.sum(l, d =>  d.Overall),  
       'avg': d3.mean(l, d =>  d.Overall),
-      'borough': l[0].Borough
+      'borough': l[0].Borough,
+      'neighborhood' : l[0].Neighborhood
     })).entries(data)
 
   let height = n.length * 33

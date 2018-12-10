@@ -5,6 +5,7 @@ input.on('click', handleOnInputClick)
 let isInputActive = false
 let body = d3.select('body').on('click', resetHandleOnInputClick)
 function resetHandleOnInputClick(){
+	console.log('inside resetHandleOnInputClick')
 	if(isInputActive) {
 		d3.select('#parkChoices').style('display','none')
 		isInputActive = false
@@ -13,7 +14,6 @@ function resetHandleOnInputClick(){
 
 // USED FOR CLICKING IN THE INPUT BOX
 function handleOnInputClick(){
-  //console.log('this is handleOnInputClick - isInputActive: ', isInputActive )
   event.stopPropagation()
   let parkChoices = d3.select('#parkChoices')
   	.style('display', () => isInputActive ? 'none' : 'block')

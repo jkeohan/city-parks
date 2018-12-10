@@ -1,7 +1,9 @@
   function rectToolTip(d) {
     console.log('this is event: ', event)
-    let top = event.offsetY;
-    let left = event.offsetX;
+    let top = event.layerY;
+    let left = event.layerX;
+    // let top = event.offsetY;
+    // let left = event.offsetX;
     let tooltip = d3.select('.rectToolTip')
     let title = d3.select('.title').text(d.key)
     let avg = d3.select('.avg').text(`Avg. Overall Rating: ${Math.floor(d.value.avg)}/100`)
@@ -20,8 +22,10 @@
 
   function circleToolTip(d){
     console.log('this is circleToolTip d: ', d)
-     let top = event.offsetY;
-    let left = event.offsetX;
+    let top = event.layerY;
+    let left = event.layerX;
+    // let top = event.offsetY;
+    // let left = event.offsetX;
     let tooltip = d3.select('.circleToolTip')
     let title = d3.select('.circleToolTip .title').text(d.Name)
     let neighborhood = d3.select('.neighborhood').text(`${d.Neighborhood}, ${d['Table Name']}`)
