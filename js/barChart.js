@@ -44,13 +44,15 @@ function renderBarChart(data) {
       'borough': l[0].Borough,
       'neighborhood' : l[0].Neighborhood
     })).entries(data)
+  console.log('this is n:', n)
 
   let height = n.length * 33
   svg.style('height', `${height}px`)
   n.sort( (a,b) => { return d3.descending(a.value.avg, b.value.avg)})
   let neighborhoods = gBottom.selectAll('g .neighborhoods').data(n, d => d.key)
   
-  let neighborhood = neighborhoods.enter().append('g').attr('class', d => 'neighborhoods')
+  let neighborhood = neighborhoods
+  .enter().append('g').attr('class', d => 'neighborhoods')
     .attr('transform', (d,i) => `translate(0,${yScale(i)})`)
   
   neighborhood.append('text')
@@ -90,10 +92,12 @@ function renderBarChart(data) {
     .on('mouseover', circleToolTip)
     .on('mouseout', removeCircleToolTip)
 
+  // UPDATE
   neighborhoods
     .transition().duration(1000)
     .attr('transform', (d,i) => `translate(0,${yScale(i)})`)
 
+  // EXIT
   neighborhoods.exit().remove()
 
 
